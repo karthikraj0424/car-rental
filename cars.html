@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nova Rental - Car Slider</title>
+  <link rel="icon" href="images/logo.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1s ease-out;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ff4c4c;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      animation: bounceIn 1.5s ease;
+    }
+    .logo {
+      height: 30px;
+      margin-right: 10px;
+    }
+    .company-name {
+    font-family: "Amarante", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    }
+    .carousel-section {
+      padding: 50px 20px;
+      background-color: #f9f9f9;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .car-card {
+      background-color: #fff;
+      min-width: 250px;
+      max-width: 250px;
+      margin-right: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .car-image {
+      width: 100%;
+      height: 200px;
+      object-fit:fill;
+    }
+
+    .car-info {
+      padding: 20px;
+    }
+
+    .car-name {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    .car-price {
+      color: #f79c42;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .book-btn {
+      background-color: #f79c42;
+      color: white;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .book-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .next-btn {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background-color: #f79c42;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      color: white;
+      font-size: 18px;
+      z-index: 10;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer ul {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 0;
+      list-style: none;
+    }
+
+    footer ul li a img {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .car-card {
+        min-width: 90%;
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Nova Rental Logo" class="logo"/>
+        <h1 class="company-name">Nova Rental</h1>
+      </div>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="cars.html">Cars</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Car Carousel Section -->
+  <section class="carousel-section">
+    <h2 class="section-title">Our Cars for Rent</h2>
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Car Card Template -->
+        <div class="car-card">
+          <img src="images/thar.jpg" alt="Thar" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Off Road</h3>
+            <p class="car-price">$300 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/car2.jpg" alt="SUV" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">SUV</h3>
+            <p class="car-price">$100 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/car3.jpg" alt="Sports Car" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Sports Car</h3>
+            <p class="car-price">$2000 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/convertible.jpg" alt="Convertible" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Convertible</h3>
+            <p class="car-price">$700 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/RR.jpg" alt="Luxury" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Luxury Car</h3>
+            <p class="car-price">$5000 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/pickup.jpg" alt="Pickup" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Pickup Truck</h3>
+            <p class="car-price">$300 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/Bmw.jpg" alt="Coupe" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Coupe</h3>
+            <p class="car-price">$600 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/tesla.jpg" alt="EV" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">EV</h3>
+            <p class="car-price">$400 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/van.jpg" alt="Van" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Van</h3>
+            <p class="car-price">$200 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="images/lum.jpg" alt="Limousine" class="car-image"/>
+          <div class="car-info">
+            <h3 class="car-name">Limousine</h3>
+            <p class="car-price">$9000 / day</p>
+            <a href="booking.html" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <button class="next-btn" id="nextBtn">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="facebook.html"><img src="images/f.png" alt="Facebook"></a></li>
+      <li><a href="instagram.html"><img src="images/i.png" alt="Instagram"></a></li>
+      <li><a href="twitter.html"><img src="images/t.png" alt="Twitter"></a></li>
+      <li><a href="gmail.html"><img src="images/g.png" alt="Email"></a></li>
+    </ul>
+    <p>Contact Us: 123-456-7890</p>
+  </footer>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const nextBtn = document.getElementById('nextBtn');
+    let position = 0;
+
+    const slideWidth = 270; // card width + margin
+    const maxScroll = track.scrollWidth - track.clientWidth;
+
+    nextBtn.addEventListener('click', () => {
+      position += slideWidth;
+      if (position > maxScroll) position = 0;
+      track.style.transform = `translateX(-${position}px)`;
+    });
+
+    // Auto-slide every 4 seconds
+    setInterval(() => {
+      nextBtn.click();
+    }, 2000);
+  </script>
+</body>
+</html>

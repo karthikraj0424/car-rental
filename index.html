@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nova Rental - Car Rental Service</title>
+  <link rel="icon" href="images/logo.png">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333;
+      --card-bg: #6dceff;
+    }
+
+    body.dark-mode {
+      --bg-color: #000000;
+      --text-color: #ffffff;
+      --card-bg: #8400ff64;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      overflow-x: hidden;
+      color: var(--text-color);
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      margin-left: 20px;
+      transition: transform 0.3s ease;
+    }
+    .theme-toggle:hover {
+      transform: rotate(30deg) scale(1.1);
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1s ease-out;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin-left: 45%;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ff4c4c;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      animation: bounceIn 1.5s ease;
+    }
+    .logo {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo-dark {
+      height: 40px;
+      margin-right: 10px;
+      display: none;
+    }
+    body.dark-mode .logo {
+      display: none;
+    }
+    body.dark-mode .logo-dark {
+      display: inline-block;
+    }
+    .company-name {
+      font-family: "Amarante", serif;
+      font-weight: 400;
+      font-style: normal;
+      color: white;
+      font-size: 1.8em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      background: url('bg.jpg') no-repeat center center/cover;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.5s ease forwards;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .hero .btn {
+      background-color: #3021b4;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 5px;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .hero .btn:hover {
+      background-color: #da1717;
+    }
+
+    .btn {
+      background: #000000;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: white;
+      color: #000000;
+      border: 1px solid #ffffff;
+      transform: scale(1.05);
+    }
+
+    .about-section {
+      background-color: var(--bg-color);
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1rem;
+    }
+    .reviews-section {
+      background-color: var(--bg-color);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .reviews-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .review-card {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+    }
+    .review-card h4 {
+      margin-bottom: 5px;
+    }
+    .review-stars {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 40px;
+    }
+
+    .services-slider-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin-top: 40px;
+    }
+    .services-slider {
+      display: flex;
+      animation: scrollSlider 10s linear infinite;
+    }
+    @keyframes scrollSlider {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-60%); }
+    }
+    .service-card {
+      min-width: 0px;
+      margin: 10px;
+      background-color: var(--card-bg);
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      flex-shrink: 0;
+    }
+    .service-icon {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+      color: #f79c42;
+    }
+    .service-title {
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+    .service-desc {
+      font-size: 0.8em;
+    }
+
+    .sticky-buttons {
+      position: fixed;
+      bottom: 30px;
+      right:  20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+    .sticky-buttons a {
+      background: #ff0000;
+      color: white;
+      text-decoration:none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+    .sticky-buttons a:hover {
+      background: #08c40b;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    footer ul {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 0;
+      margin-bottom: 10px;
+    }
+    footer ul li {
+      list-style: none;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+    
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Nova Rental Logo" class="logo">
+        <img src="images/logo.png" alt="Nova Rental Logo Dark" class="logo-dark">
+        <h1 class="company-name">Nova Rental</h1>
+      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="cars.html">Cars</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Nova Rental</h1>
+      <p>Explore our wide range of vehicles and enjoy hassle-free rentals</p><br><br>
+      <a href="cars.html" class="btn">View Cars</a>
+    </div>
+  </section>
+  <!-- Features Section -->
+  <h2 class="section-title">Why Choose Nova Rental?</h2>
+  <div class="services-slider-container">
+    <div class="services-slider">
+      <div class="service-card"><div class="service-icon">📞</div><h3 class="service-title">24/7 Support</h3><p class="service-desc">We’re always available to assist you, anytime, anywhere.</p></div>
+      <div class="service-card"><div class="service-icon">❌</div><h3 class="service-title">Free Cancellation</h3><p class="service-desc">Cancel up to 24 hours in advance for free.</p></div>
+      <div class="service-card"><div class="service-icon">🚗</div><h3 class="service-title">Doorstep Delivery</h3><p class="service-desc">Get your car delivered right to your doorstep.</p></div>
+      <div class="service-card"><div class="service-icon">🧼</div><h3 class="service-title">Sanitized Cars</h3><p class="service-desc">Clean & safe vehicles before every ride.</p></div>
+      <div class="service-card"><div class="service-icon">💳</div><h3 class="service-title">Easy Payments</h3><p class="service-desc">Pay via UPI, cards, or wallet options.</p></div>
+      <div class="service-card"><div class="service-icon">🕒</div><h3 class="service-title">Flexible Rentals</h3><p class="service-desc">Hourly, daily or weekly rental plans.</p></div>
+      <div class="service-card"><div class="service-icon">🛠️</div><h3 class="service-title">Roadside Assistance</h3><p class="service-desc">We’re there for you, anytime you need.</p></div>
+    </div>
+  </div>
+  <!-- Reviews Section -->
+    <section class="reviews-section">
+      <h2>What Our Customers Say</h2>
+      <div class="reviews-container">
+        <div class="review-card">
+          <h4>Aryan M.</h4>
+          <div class="review-stars">★★★★★</div>
+          <p>Very smooth experience. Car was clean, and the support team was super helpful.</p>
+        </div>
+        <div class="review-card">
+          <h4>Sneha R.</h4>
+          <div class="review-stars">★★★★☆</div>
+          <p>Loved the doorstep delivery and pickup! Will definitely book again.</p>
+        </div>
+        <div class="review-card">
+          <h4>Rahul K.</h4>
+          <div class="review-stars">★★★★★</div>
+          <p>Flexible plans, great support and awesome cars. Totally recommended!</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- About Us Section -->
+  <section class="about-section">
+    <h2>About Nova Rental</h2>
+    <p>Nova Rental is your trusted partner for flexible and affordable car rental solutions. Whether you're planning a weekend getaway, a business trip, or daily commuting, we offer a diverse fleet with top-notch service. Enjoy hassle-free bookings, doorstep delivery, and 24/7 support.</p>
+  </section>
+  
+  <!-- Sticky Buttons -->
+  <div class="sticky-buttons">
+    <a href="contact.html">📞 Contact Us</a>
+    <a href="cars.html">🚘 Rent a Car</a>
+    <a href="#home">🔝 Back to Top</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="facebook.html" target="_blank"><img src="images/f.png" width="30" height="30"></a></li>
+        <li><a href="instagram.html" target="_blank"><img src="images/i.png" width="30" height="30"></a></li>
+        <li><a href="twitter.html" target="_blank"><img src="images/t.png" width="30" height="30"></a></li>
+        <li><a href="gmail.html" target="_blank"><img src="images/g.png" width="30" height="30"></a></li>
+      </ul>
+      <p>Contact Us: 123-456-7890 </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    };
+  </script>
+
+</body>
+</html>

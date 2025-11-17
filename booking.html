@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Page - Nova Rental</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .booking-section {
+      background-color: #fff;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .booking-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .booking-container h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .booking-container p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .booking-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: left;
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .booking-container label {
+      font-size: 1.1em;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .booking-container input,
+    .booking-container select {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .booking-container button {
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #f79c42;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .booking-container button:hover {
+      background-color: #e67e22;
+    }
+
+    /* Popup Styling */
+    .payment-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .payment-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      animation: scaleIn 0.4s ease-in-out;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .payment-content h3 {
+      margin-bottom: 20px;
+      font-size: 1.6em;
+      color: #444;
+    }
+
+    .payment-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .pay-btn {
+      padding: 12px;
+      border: none;
+      background-color: #f79c42;
+      color: #fff;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .pay-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5em;
+      color: #666;
+      cursor: pointer;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .booking-container form {
+        padding: 15px;
+      }
+
+      .booking-container button {
+        font-size: 1em;
+        padding: 12px 20px;
+      }
+
+      .payment-content h3 {
+        font-size: 1.3em;
+      }
+
+      .pay-btn {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Booking Section -->
+  <section id="booking" class="booking-section">
+    <div class="booking-container">
+      <h2>Book Your Car</h2>
+      <p>Fill out the form below to book your rental car:</p>
+
+      <!-- Booking Form -->
+      <form id="bookingForm" onsubmit="event.preventDefault(); showPaymentPopup();">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="pickup_location">Pickup Location:</label>
+        <input type="text" id="pickup_location" name="pickup_location" required>
+
+        <label for="drop_location">Drop Location:</label>
+        <input type="text" id="drop_location" name="drop_location" required>
+
+        <label for="pickup_date">Pick-up Date:</label>
+        <input type="date" id="pickup_date" name="pickup_date" required>
+
+        <label for="dropoff_date">Drop-off Date:</label>
+        <input type="date" id="dropoff_date" name="dropoff_date" required>
+
+        <button type="submit">Book Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentPopup" class="payment-popup">
+    <div class="payment-content">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      <h3>Select Payment Method</h3>
+      <div class="payment-options">
+        <button class="pay-btn">💳 Credit / Debit Card</button>
+        <button class="pay-btn">🏦 Net Banking</button>
+        <button class="pay-btn">📱 UPI (Google Pay / PhonePe)</button>
+        <button class="pay-btn">💼 Wallet (Paytm / Amazon Pay)</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPaymentPopup() {
+      document.getElementById("paymentPopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("paymentPopup").style.display = "none";
+    }
+
+    // Close when clicking outside popup
+    window.addEventListener('click', function(e) {
+      const popup = document.getElementById("paymentPopup");
+      if (e.target === popup) {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>

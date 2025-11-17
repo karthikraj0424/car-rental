@@ -1,66 +1,21 @@
-🚗 Nova Rental – Car Rental Website
+**✨ # NOVA RENTAL – CAR RENTAL WEBSITE**
+A Modern, Clean, Professional Car Rental Frontend
 
-Nova Rental is a modern, responsive car rental website built using HTML, CSS, and JavaScript.
-It features a clean UI, smooth animations, dark mode support, and multiple pages for a complete rental experience.
+**🚗 ## ABOUT THE PROJECT**
+NOVA RENTAL is a fully responsive, multi-page CAR RENTAL WEBSITE built using HTML, CSS, and JavaScript.
+It delivers a polished user experience with smooth animations, dark mode, customer reviews, and a modern design.
 
-🌟 Features
+**🌟 ## KEY FEATURES**
+✔ DARK / LIGHT MODE (Saved with LocalStorage)
+✔ HERO BANNER WITH CTA
+✔ AUTO-SCROLLING SERVICES SLIDER
+✔ CUSTOMER REVIEW CARDS
+✔ STICKY ACTION BUTTONS
+✔ MULTI-PAGE NAVIGATION
+✔ ANIMATED UI ELEMENTS
+✔ CLEAN RESPONSIVE DESIGN
 
-🌙 Dark/Light Mode Toggle (saved in localStorage)
-
-🎯 Hero Section with CTA Button
-
-🚘 Auto-Scrolling Services Slider
-
-⭐ Customer Reviews Section
-
-📍 Sticky Quick Access Buttons
-
-📱 Fully Responsive Design
-
-📄 Multi-page navigation:
-
-Home
-
-Cars
-
-About
-
-Contact
-
-Login
-
-Signup
-
-🖥️ Technology Used
-
-HTML5
-
-CSS3
-
-JavaScript
-
-Custom animations (keyframes)
-
-Responsive layout techniques
-
-📸 Preview
-
-(You can add screenshots here later)
-
-🚀 How to Use
-
-Clone or download the repository
-
-Open index.html in any browser
-
-Explore all pages and features
-
-Toggle between dark/light mode
-
-Enjoy the smooth UI experience!
-
-
-Nova-Rental/
+**NOVA-RENTAL/**
 │── index.html
 │── cars.html
 │── about.html
@@ -68,26 +23,40 @@ Nova-Rental/
 │── login.html
 │── signup.html
 │── images/
-│── css/ (if you add external css)
-│── js/ (if external scripts)
+│── css/ 
+│── js/   
 
 
-📦 Future Enhancements
+**🛠️ ## TECHNOLOGIES USED**
+HTML5
+CSS3
+JavaScript 
+Custom Animations & Keyframes
+Responsive Design Techniques
 
-Add backend for real booking system
+**🚀 ## HOW TO RUN**
+1.Clone or download the repo
+2.Open index.html in any browser
+3.Navigate through each page
+4.Use dark/light mode toggle
+5.Enjoy the premium UI
 
-Add database for user login/signup
+**🔮 ## FUTURE IMPROVEMENTS**
+-Backend booking system
+-Database for user login
+-Admin dashboard
+-Real car images & pricing
+-Payment integration
 
-Add admin dashboard
+**👤 ## AUTHOR**
+KARTHIKRAJ k
+Frontend Developer
 
-Add real car images & pricing
 
-📝 License
 
-This project is licensed under the MIT License (optional).
-You may edit this section depending on your choice.
 
-✨ Author
 
-Karthikraj
-Frontend Developer (Beginner)
+
+
+
+

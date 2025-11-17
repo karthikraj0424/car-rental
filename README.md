@@ -50,7 +50,7 @@ Responsive Design Techniques
 
 **👤 ## AUTHOR**
 KARTHIKRAJ k
-Frontend Developer
+Frontend Developer 
 
 
 
